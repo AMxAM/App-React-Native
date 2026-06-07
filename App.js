@@ -5,6 +5,7 @@ import LoginScreen from './src/views/LoginScreen';
 import HomeScreen from './src/views/HomeScreen';
 import UploadScreen from './src/views/UploadScreen';
 import RegisterScreen from './src/views/RegisterScreen';
+import EditUserScreen from './src/views/EditUserScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,11 @@ export default function App() {
         <Stack.Screen
           name="Upload"
           component={UploadScreen}
+        />
+
+        <Stack.Screen
+          name="EditUser"
+          component={EditUserScreen}
         />
 
       </Stack.Navigator>

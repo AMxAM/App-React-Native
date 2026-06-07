@@ -1,2 +1,2 @@
 export const API_URL =
-  'http://10.117.44.118:8080';
+  'https://8g3d9m36sk.execute-api.us-east-2.amazonaws.com';

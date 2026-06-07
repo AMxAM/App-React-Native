@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { API_URL }
-from '../config/Api';
+import { API_URL } from '../config/Api';
 
 const ApiService = {
 
@@ -67,6 +66,62 @@ const ApiService = {
     return await response.json();
   },
 
+  async deleteUser(id) {
+
+  const token =
+    await AsyncStorage.getItem(
+      'token'
+    );
+
+  const response = await fetch(
+    `${API_URL}/api/v1/users/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  return await response.json();
+},
+
+async updateUser(
+  id,
+  nombre,
+  email,
+  password
+) {
+
+    const token =
+      await AsyncStorage.getItem(
+        'token'
+      );
+
+    const response = await fetch(
+      `${API_URL}/api/v1/users/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre,
+          email,
+          password,
+        }),
+      }
+    );
+
+    return await response.json();
+  },
 };
 
 export default ApiService;
+
+
+
+
+

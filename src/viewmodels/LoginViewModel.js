@@ -44,7 +44,29 @@ const LoginViewModel = {
   return await AuthRepository.getUsers();
 
 },
+  async deleteUser(id) {
 
+  return await AuthRepository.deleteUser(
+    id
+  );
+
+},
+
+async updateUser(
+  id,
+  nombre,
+  email,
+  password
+) {
+
+  return await AuthRepository.updateUser(
+    id,
+    nombre,
+    email,
+    password
+  );
+
+},
 };
 
 export default LoginViewModel;

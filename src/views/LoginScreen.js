@@ -46,11 +46,12 @@ const token =
 alert('Login exitoso');
 
     } catch (error) {
-
+       
       alert(
         'Error al iniciar sesión'
+        
       );
-
+      
       console.log(error);
 
     }
@@ -119,3 +120,4 @@ const styles = StyleSheet.create({
   },
 
 });
+

@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 
+import { Alert } from 'react-native';
 import LoginViewModel from '../viewmodels/LoginViewModel';
 
 export default function HomeScreen({ navigation }) {
@@ -24,21 +25,56 @@ export default function HomeScreen({ navigation }) {
 
     try {
 
-      const [
-        lista1,
-        lista2
-      ] = await Promise.all([
-        LoginViewModel.getUsers(),
-        LoginViewModel.getUsers()
-      ]);
-
-      setUsuarios(lista1);
+      const lista =
+        await LoginViewModel.getUsers();
+      setUsuarios(lista);
 
     } catch (error) {
 
       console.log(error);
 
     }
+
+  };
+
+  const eliminarUsuario = async (id) => {
+
+    Alert.alert(
+      'Eliminar usuario',
+      '¿Deseas eliminar este usuario?',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          style: 'destructive',
+          onPress: async () => {
+
+            try {
+
+              await LoginViewModel.deleteUser(
+                id
+              );
+
+              cargarDatos();
+
+            } catch (error) {
+
+              console.log(error);
+
+              Alert.alert(
+                'Error',
+                'No se pudo eliminar'
+              );
+
+            }
+
+          },
+        },
+      ]
+    );
 
   };
 
@@ -75,6 +111,25 @@ export default function HomeScreen({ navigation }) {
                   {user.email}
                 </Text>
 
+                <View style={styles.buttonsContainer}>
+
+                  <Button
+                    title="Editar"
+                    onPress={() =>
+                      navigation.navigate(
+                        'EditUser',
+                        { user }
+                      )
+                    }
+                  />
+                  <Button
+                    title="Eliminar"
+                    color="red"
+                    onPress={() =>
+                      eliminarUsuario(user.id)
+                    }
+                  />
+                </View>
               </View>
             ))
           : null
