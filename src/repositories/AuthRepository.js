@@ -26,6 +26,29 @@ const AuthRepository = {
 
 },
 
+  async deleteUser(id) {
+
+  return await ApiService.deleteUser(
+    id
+  );
+
+},
+
+async updateUser(
+  id,
+  nombre,
+  email,
+  password
+) {
+
+  return await ApiService.updateUser(
+    id,
+    nombre,
+    email,
+    password
+  );
+
+},
 };
 
 

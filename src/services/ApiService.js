@@ -117,6 +117,29 @@ async updateUser(
 
     return await response.json();
   },
+  async sendNotification(
+  email,
+  subject,
+  message
+) {
+
+    const response = await fetch(
+      `${API_URL}/api/v1/notifications/send`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          subject,
+          message,
+        }),
+    }
+  );
+
+  return await response.json();
+},
 };
 
 export default ApiService;

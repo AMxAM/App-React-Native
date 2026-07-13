@@ -92,6 +92,15 @@ export default function HomeScreen({ navigation }) {
           navigation.navigate('Upload')
         }
       />
+      <View style={{ marginBottom: 10 }} />
+      <Button
+        title="Enviar Correo"
+        onPress={() =>
+          navigation.navigate(
+            'Notifications'
+          )
+        }
+      />
 
       <View style={{ marginBottom: 20 }} />
 
@@ -157,6 +166,12 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     marginBottom: 10,
+  },
+
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
   },
 
 });

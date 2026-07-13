@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import NotificationScreen from './src/views/NotificationScreen';
 import LoginScreen from './src/views/LoginScreen';
 import HomeScreen from './src/views/HomeScreen';
 import UploadScreen from './src/views/UploadScreen';
@@ -41,6 +41,10 @@ export default function App() {
           component={EditUserScreen}
         />
 
+        <Stack.Screen
+          name="Notifications"
+          component={NotificationScreen}
+        />
       </Stack.Navigator>
 
     </NavigationContainer>
